@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    'use strict'
+    /*1.1. Assessment - Working with array 
+Given array “arr”. Find and print the maximum and minimum numbers of array. 
+⮚ Example: arr = [45, 100, 65, 11, 98, 78, 1000, 65, "45", 98, 14, 78, 35, "98", "10452", "667", 17] 
+Output: “min = 11 , max = 10452” */
+
+
+
+    function findMinMax(arr) {
+      if (arr.length === 0) {
+        return "Array is empty.";
+      }
+
+      // Use the spread operator to create a copy of the array
+      const sortedArray = [...arr].sort((a, b) => a - b);
+
+      const minimum = sortedArray[0];
+      const maximum = sortedArray[arr.length - 1];
+
+      return { minimum, maximum };
+    }
+
+    // Example usage:
+    const myArray = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
+    const result = findMinMax(myArray);
+
+    console.log("Minimum:", result.minimum);
+    console.log("Maximum:", result.maximum);
+    /*
+        In this example, the `findMinMax` function takes an array as input, checks if it's empty, and then creates a sorted copy of the array. The minimum value is the first element, and the maximum value is the last element in the sorted array. The example usage demonstrates how to call the function with an array and print the minimum and maximum values.
+        
+        
+        /*2. Assessment - Fibonacci numbers 
+        Print the Fibonacci sequence up to the n-th term (the n-th term is entered by the user). Output an error message if a non-numeric value is entered․ 
+        Read about Fibonacci sequence here: https://en.wikipedia.org/wiki/Fibonacci_sequence 
+        ⮚ For example: 
+        Entered: “Hello” 
+        Output: “Error - entered value is not a number” 
+        Entered: 5 
+        Output: [0, 1, 1, 2,3] 
+        */
+
+    function printFibonacci(n) {
+      if (isNaN(n) || n <= 0 || !Number.isInteger(n)) {
+        console.error("Please enter a positive integer.");
+        return;
+      }
+
+      let fibonacciSequence = [0, 1];
+
+      for (let i = 2; i < n; i++) {
+        fibonacciSequence.push(fibonacciSequence[i - 1] + fibonacciSequence[i - 2]);
+      }
+
+      console.log(`Fibonacci sequence up to the ${n}-th term:`, fibonacciSequence.join(', '));
+    }
+
+    // Example usage:
+    const userInput = prompt("Enter the value of n to print Fibonacci sequence:");
+    const n = parseInt(userInput);
+
+    printFibonacci(n);
+
+    //8 թիվը տալիս վերադարձնում է՝ Fibonacci sequence up to the 8-th term: 0, 1, 1, 2, 3, 5, 8, 13
+    //5 թիվը տալիս վերադարձնում է՝ Fibonacci sequence up to the 8-th term: 0, 1, 1, 2, 3
+  </script>
+</body>
+
+</html>

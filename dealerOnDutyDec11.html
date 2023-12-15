@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict"
+        /*1.Create a function that takes an array of numbers and return “Boom! if
+        the digit 7 appears in the array. Otherwise, return “there is no 7 in the array”.*/
+
+
+        // //Array.prototype.some()մեթոդը ստուգում է, թե զանգվածի գոնե մեկ էլեմենտ հաղթահարում է տրված ֆունկցիայի իրագործած թեստը: Եթե այո, ապա some() մեթոդը վերադարձնում է true, եթե ոչ՝ false: 
+        // function findSeven(arr) {
+        //     return arr.some(num => num.toString().includes('7')) ? "Boom!" : "there is no 7 in the array";
+        // }
+        // //Որպեսզի այս ֆունկցիան օգտագործենք, ուղղակի պետք այն կանչել՝ որպես արգումենտ փոխանցելով թվերի զանգված
+        // console.log(findSeven([1, 2, 3, 4, 5, 6, 7])); // "Boom!"
+        // console.log(findSeven([8, 9, 10, 11, 12, 13, 14, 15])); // "there is no 7 in the array"
+        // console.log(findSeven([8, 97, 10, 11, 12, 13, 14, 15])); // "Boom!"
+
+        /*2.Create a function that takes string as argument, especially link and returns the key and value of
+    the link.YOU CAN’T USE REGEX AND SPLICE METHOD! */
+        //Կարելի է օգտվել URLSearchParams օբյեկտից և forEach() մեթոդից: 
+        function extractParams(url) {
+            const searchParams = new URLSearchParams(new URL(url).search);
+            let result = '';
+            searchParams.forEach((value, key) => {
+                result += `${key}: ${value}<br>`;
+            });
+            return result;
+        }
+        //Որպեսզի այս ֆունկցիան օգտագործենք, ուղղակի պետք այն կանչել՝ որպես արգումենտ փոխանցելով որևէ URL:
+        console.log(extractParams('https://example.com?param1=value1&param2=value2'));
+        // Output: param1: value1<br>param2: value2<br>
+        console.log(extractParams('https://translate.google.com/?sl=en&tl=hy&text=assignment'));
+    // Output: sl: en<br>tl: hy<br>text: assignment<br>
+
+        /* extractParams ֆունկցիան կիրառվում է հարցման պարամետրերը տվյալ URL-ից հանելու համար:
+        Ֆունկցիան հետևում է հետևյալ քայլերին.
+    
+    1.Տվյալ URL-ով ստեղծել նոր URL օբյեկտ:
+    2.Հանեք URL-ի որոնման մասը՝ օգտագործելով URL օբյեկտի search property-ն: URL-ի այս հատվածը պարունակում է հարցման պարամետրերը:
+    3.URL-ի որոնման հատվածով ստեղծել նոր URLSearchParams օբյեկտ: Այս օբյեկտը կարելի է օգտագործել հարցման պարամետրերի անուններն ու արժեքները ստանալու համար:
+    4.Հարցման յուրաքանչյուր պարամետրի վրա  iterate անելու համար օգտագործել URLSearchParams օբյեկտի forEach մեթոդը:
+    5.Հարցման յուրաքանչյուր պարամետրի համար, result տողին ավելացնել դրա անվանումը և արժեքը, որոնք բաժանված երկու կետով և բացատով, այսինքն՝ անվանումը,երկու կետ, բացատ,արժեքը: Ապա տողի ընդմիջում(a line break):
+    6.Վերադարձեք result տողը։ 
+    
+    Այս օրինակում ֆունկցիան կանչվում է «https://example.com?param1=value1&param2=value2» URL-ով: URL-ը պարունակում է հարցման երկու պարամետր՝ «param1»՝ «value1» արժեքով, և «param2»՝ «value2» արժեքով:
+    
+    Ֆունկցիան կրկնվում է հարցման յուրաքանչյուր պարամետրի վրա(iterates over each query parameter), հանում է նրա անունը և արժեքը(extracts its name and value) և դրանք ավելացնում result տողին(appends them to the ՝result՝ string): Այնուհետև result տողը հետ է տրվում(is returned), և այն պարունակում է հետևյալ HTML կոդը.
+    param1: value1<br>param2: value2<br>
+    
+    Երբ ֆունկցիան կանչվում է «https://translate.google.com/?sl=en&tl=hy&text=assignment» URL-ով, այն արտաքաղում է նաև «sl», «tl» և «text» հարցման պարամետրերը և դրանք ավելացնում result տողին:Այնուհետև result տողը վերադարձ է արվում, և այն պարունակում է հետևյալ HTML կոդը.
+    sl: en<br>tl: hy<br>text: assignment<br>
+    
+    Այս մոտեցումը թույլ է տալիս URL-ից հեշտությամբ արտաքաղել հարցման պարամետրերը և ցուցադրել դրանք ընթեռնելի ձևաչափով:
+    */
+    </script>
+</body>
+
+</html>

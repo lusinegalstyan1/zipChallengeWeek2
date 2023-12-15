@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    'use strict'
+
+    /*Assessment 1
+A salesman has a number of cities to visit.
+He wants to calculate the total number of
+possible paths he could take, visiting EACH
+city once before returning home. Write a
+function to find the total number of possible
+paths for a given number of cities(n)
+
+function paths(n) {
+}
+console.log(paths(4))
+
+If we have cities A, B and C, possible paths would be:
+A -> B -> C
+A -> C -> B
+B -> A -> C
+B -> C -> A
+C -> B -> A
+C -> A -> B
+It turns out that paths(3) ➞ 6
+... which gives us the possible number of paths.6
+
+Examples
+paths(4) ➞ 24
+paths(1) ➞ 1
+paths(9) ➞ 362880
+*/
+
+    function factorial(num) {
+        if (num === 0 || num === 1) {
+            return 1;
+        } else {
+            return num * factorial(num - 1);
+        }
+    }
+
+    function paths(n) {
+        // Calculate the factorial of n since the salesman returns home
+        return factorial(n);
+    }
+
+    // Example usage:
+    console.log(paths(1));// Output: 1
+    console.log(paths(3)); // Output: 6
+    console.log(paths(4)); // Output: 24
+    console.log(paths(9));// Output: 362880
+
+    /*paths ֆունկցիան հաշվարկում է n-ի գործակիցը(factorial), որը ճիշտ բանաձև է 
+    հավանական ուղիների ընդհանուր քանակի համար, եթե վաճառողը մեկ անգամ այցելի յուրաքանչյուր քաղաք մինչև տուն վերադառնալը:/* 
+     
+    1. //Factorial Function (`factorial`):
+       //Factorial ֆունկցիայի ջավասկրիպտ կոդը՝
+    
+       function factorial(num) {
+         if (num === 0 || num === 1) {
+           return 1;
+         } else {
+           return num * factorial(num - 1);
+         }
+       }
+       ՝՝՝
+       - This function calculates the factorial of a given number `num`.
+       - Factorial is the product of all positive integers up to that number.
+       - The base case is when `num` is 0 or 1, where the factorial is 1.
+       - Otherwise, it recursively multiplies `num` by the factorial of `(num - 1)`.
+    
+    2. **Paths Function (`paths`):**
+       Paths ֆունկցիայի ջավասկրիպտ կոդը`
+    
+       function paths(n) {
+         // Calculate the factorial of n since the salesman returns home
+         return factorial(n);
+       }
+       
+       - This function takes an argument `n`, representing the number of cities.
+       - It calculates the total number of possible paths for the salesman to visit each city once before returning home.
+       - It achieves this by calling the `factorial` function with the argument `n`.
+    
+    3. **Կիրառության օրինակներ:**
+       
+       console.log(paths(3)); // Output: 6
+       console.log(paths(4)); // Output: 24
+      
+       /*- The first example (`paths(3)`) calculates the total number of paths for 3 cities, and the correct output is 6.
+       - The second example (`paths(4)`) calculates the total number of paths for 4 cities, and the correct output is 24.
+     
+             */
+
+    /*Assessment 2
+           
+           Create a function that takes a number that represents a person's programming
+           language score, and returns an alphabetised array of programming languages
+           they are proficient in. Arbitrarily assigned points for each language are listed
+           below:
+           
+           Language Points
+           C# 1
+           C++ 2
+           Java 4
+           JavaScript 8
+           PHP 16
+           Python 32
+           Ruby 64
+           Swift 128
+           
+           function getLanguages(num) {
+           }
+           
+           Examples
+           getLanguages(25) ➞ ["C#", "JavaScript", "PHP"]
+           getLanguages(100) ➞ ["Java", "Python", "Ruby"]
+           getLanguages(53) ➞ ["C#", "Java", "PHP", "Python"]
+           */
+
+    // function getLanguages(num) {
+    //   const languages = {
+    //     'C#': 1,
+    //     'C++': 2,
+    //     'Java': 4,
+    //     'JavaScript': 8,
+    //     'PHP': 16,
+    //     'Python': 32,
+    //     'Ruby': 64,
+    //     'Swift': 128
+    //   };
+
+    //   const proficientLanguages = Object.keys(languages).filter(language => {
+    //     return num >= languages[language];
+    //   });
+
+    //   // Sort the languages based on their scores in descending order
+    //   proficientLanguages.sort((a, b) => languages[b] - languages[a]);
+
+    //   let sum = 0;
+    //   const result = proficientLanguages.filter(language => {
+    //     if (sum + languages[language] <= num) {
+    //       sum += languages[language];
+    //       return true;
+    //     }
+    //     return false;
+    //   });
+
+    //   return result.sort();
+    // }
+
+    // Example usage:
+    // console.log(getLanguages(25)); // ["C#", "JavaScript", "PHP"]
+    // console.log(getLanguages(100)); // ["Java", "Python", "Ruby"]
+    // console.log(getLanguages(53)); // ["C#", "Java", "PHP", "Python"]
+
+
+
+  </script>
+</body>
+
+</html>

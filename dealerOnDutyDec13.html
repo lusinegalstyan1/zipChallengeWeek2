@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict"
+        /*1. Write the function camelize(str) that changes dash-separated words like “my-short-string” into
+camel-cased “myShortString”. That is: removes all dashes, each word after dash becomes
+uppercased.  */
+
+        function camelize(str) {
+            let words = str.split('-');
+            let result = '';
+            for (let i = 0; i < words.length; i++) {
+                if (i === 0) {
+                    result += words[i];
+                } else {
+                    result += words[i].charAt(0).toUpperCase() + words[i].slice(1);
+                }
+            }
+            return result;
+        }
+        const str = 'my-short-string';
+        console.log(camelize(str));
+
+        /*
+        1.Սկսում ենք մուտքային տողը բաժանելով բառերի զանգվածի, օգտագործելով գծիկ ('-') որպես բաժանարար:
+        2.Այնուհետև ստեղծում ենք դատարկ տող, որը կոչվում է result՝ վերջնական camel-cased տողը պահեստավորելու համար:
+        3.Պտտվում ենք բառերի զանգվածի յուրաքանչյուր բառի միջով: Եթե բառը զանգվածում առաջինն է (այսինքն, i-ն 0 է), մենք այն ավելացնում ենք result տողին, ինչպես կա: Հակառակ դեպքում result տողին ավելացնում ենք բառի առաջին նիշը՝ մեծատառով: Այնուհետև մենք ավելացնում ենք բառի մնացած  մասը (երկրորդ նիշից սկսած) result տողի մեջ:
+        */
+        /* 2.Given a sequence of integers as an array, determine whether it is possible to obtain a strictly
+increasing sequence by removing no more than one element from the array.
+Note: sequence a0, a1, ..., an is considered to be a strictly increasing if a0 < a1 < ... < an.
+Sequence containing only one element is also considered to be strictly increasing.
+For sequence = [1, 3, 2, 1], the output should be solution(sequence) = false.
+There is no one element in this array that can be removed in order to get a strictly increasing
+sequence.
+For sequence = [1, 3, 2], the output should be solution(sequence) = true.
+You can remove 3 from the array to get the strictly increasing sequence [1, 2]. Alternately, you
+can remove 2 to get the strictly increasing sequence [1, 3].
+[execution time limit] 4 seconds
+[input] array.integer
+[output] Boolean
+Return true if it is possible to remove one element from the array in order to get a strictly
+increasing sequence, otherwise return false.  */
+
+        function solution(sequence) {
+            function isIncreasing(arr) {
+                for (let i = 1; i < arr.length; i++) {
+                    if (arr[i] <= arr[i - 1]) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            for (let i = 0; i < sequence.length; i++) {
+                // Check if removing the current element makes the sequence increasing
+                const sequence1 = [...sequence.slice(0, i), ...sequence.slice(i + 1)];
+                if (isIncreasing(sequence1)) {
+                    return true;
+                }
+
+                // Check if removing the next element makes the sequence increasing
+                const sequence2 = [...sequence.slice(0, i + 1), ...sequence.slice(i + 2)];
+                if (isIncreasing(sequence2)) {
+                    return true;
+                }
+            }
+
+            // If no removal results in a strictly increasing sequence
+            return false;
+        }
+
+        // Example usage:
+        console.log(solution([1, 3, 2, 1])); // Output: false
+        console.log(solution([1, 3, 2]));    // Output: true
+        console.log(solution([1, 5, 2]));
+/*Այս խնդիրը կարելի է լուծել՝ iterate աելով տվյալ զանգվածի միջով և ստուգելով, թե արդյոք ընթացիկ տարրի կամ հաջորդ տարրի հեռացումը կհանգեցնի խիստ աճող հաջորդականության: Եթե ոչ մի հեռացում չի հանգեցնում խիստ աճող հաջորդականության, ապա դա հնարավոր չէ, և դուք վերադարձնում եք false:
+        Այս ֆունկցիան սահմանում է օգնական «Increasing» ֆունկցիան՝ ստուգելու համար, թե արդյոք տվյալ զանգվածը խիստ մեծանում է: Հիմնական գործառույթը կրկնվում է հաջորդականության յուրաքանչյուր տարրի միջով և ստուգում, թե արդյոք ընթացիկ կամ հաջորդ տարրը հեռացնելը հանգեցնում է խիստ աճող հաջորդականության: Եթե այո, ապա այն վերադառնում է ճշմարիտ: Եթե ոչ մի հեռացում չի հանգեցնում խիստ աճող հաջորդականության, այն վերադարձնում է  false:
+        */
+
+
+    </script>

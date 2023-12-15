@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict"
+        //1. Assessment - Perfect numbers
+        // Write a JavaScript function which says whether a number is perfect.
+        // Note : In number theory, a perfect number is a positive integer that is equal to the
+        // sum of its proper positive divisors, that is, the sum of its positive divisors
+        // excluding the number itself (also known as its aliquot sum). Equivalently, a
+        // perfect number is a number that is half the sum of all of its positive divisors
+        // (including itself).
+        // Example: Divisor of 28: 1, 2, 4, 7, 14, 28
+        // Sum of: 1 + 2 + 4 + 7 + 14 = 28 (28 is perfect number)
+
+        function isPerfectNumber(number) {
+            if (number <= 0) {
+                return false; // Perfect numbers are positive integers
+            }
+
+            let sum = 0;
+
+            // Iterate through potential divisors up to the square root of the number
+            for (let i = 1; i <= Math.sqrt(number); i++) {
+                if (number % i === 0) {
+                    // If i is a divisor, add i and the corresponding divisor to the sum
+                    sum += i;
+                    if (i !== number / i) {
+                        sum += number / i;
+                    }
+                }
+            }
+
+            // Subtract the number itself as it was included in the sum
+            sum -= number;
+
+            // Check if the sum of divisors equals the original number
+            return sum === number;
+        }
+
+        // Example usage:
+        const exampleNumber1 = 28;
+        const exampleNumber2 = 18;
+        const result1 = isPerfectNumber(exampleNumber1);
+        const result2 = isPerfectNumber(exampleNumber2)
+        console.log(result1); // Output: true
+        console.log(result2); // Output: false
+/*
+Explanation:
+
+1.`isPerfectNumber` ֆունկցիան:**
+   - ստանում է `number` որպես argument.
+   - ստուգում է number-ը փոքր կամ հավասար է 0-ի (perfect թվերը դրական ամբողջ թվեր՝ integers են).
+
+2. **Բաժանարարների գումարում:**
+   - 0-ից սկզբնավորում է `sum` պահեստավորելու բաժանարարների գումարը.
+   - Iterates է անում potential բաժանարարների միջով մինչև թվի քառակուսի արմատը.
+   - If թիվը բաժանարար է, այն ավելացնում է sum-ին.
+
+3. **Adjusting for Duplicates:** 
+   - If the divisor `i` is not the square root of the number, adds the corresponding divisor `number / i` to avoid duplicates.
+Եթե i բաժանարարը թվի քառակուսի արմատը չէ, ,ապա ավելացնում է հմպտսխան բաժանարար `number / i`, որպեսզի խուսափի կրկնություններից:
+4. **Subtract the Number:**
+   - Subtracts the original number from the sum because it was included in the divisors.
+
+5. **Check for Perfection:**
+   - Ստուգում է՝ արդյոք բաժանարարների գումարը հավասար է օրիգինալ թվին.
+
+6. **Example Usage:**
+   - Մի քանի օրինակով ցուցադրում է՝ ինչպես օգտագործել ֆունկցիան(`28`, ՝18՝).
+   - Արդյունքն արտածում է console-ում. Մի դեպքում, արտածումը `true` է, քանի որ  28-ը perfect թիվ է.
+*/
+
+        // 2. Assessment
+        // Write program which accept a number as input and insert dashes (-) between
+        // each two even numbers (including 0).
+        // Example։ 025468 // 0-254-6-8
+
+        // function insertDashesBetween2Evens(inputNumber) {
+        //     let numberString = inputNumber.toString();
+        //     let result = '';
+
+        //     for (let i = 0; i < numberString.length; i++) {
+        //         const currentDigit = parseInt(numberString[i]);
+        //         const nextDigit = parseInt(numberString[i + 1]);
+        //         result += currentDigit;
+
+        //         if (currentDigit % 2 === 0 && nextDigit % 2 === 0) {
+        //             result += '-';
+        //         };
+        //     };
+        //     return result;
+        // }
+
+        // const inputNumber = 5267806;
+        // const result = insertDashesBetween2Evens(inputNumber);
+        // console.log(result);
+        //Այս ծրագիրը որպես մուտքագրում ընդունում է թիվ, այն վերածում է տողի և այնուհետև iterate անում յուրաքանչյուր թվանշանի նկատմամբ: Եթե պատահում են երկու հաջորդական զույգ թվանշաններ, ապա այն result տողում դրանց միջև գծիկ է դնում: Կիրառական օրինակը ցույց է տալիս, թե ինչպես կարելի է կանչել ֆունկցիան 5267806 մուտքային համարով, և տպում է «52-678-06» ելքը:
+    </script>
+</body>
+
+</html>
